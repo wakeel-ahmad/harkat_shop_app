@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tourism/data/apis/base_api.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:tourism/views/splash/splash.dart';
 import 'core/core.dart';
-import 'views/home/home_view.dart';
 
 void main() async {
   await GetStorage.init();
@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: Routes.splash,
       getPages: AppPages.routes,
       initialBinding: BindingsBuilder.put(() => AppApi()),
+      // home: SplashView(),
     );
   }
 }

@@ -1,1 +1,1 @@
-export 'home/home_view.dart';
+export 'package:tourism/views/dashbord/home/home.dart';

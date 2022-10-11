@@ -38,6 +38,15 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.0.3
   pusher_client: ^2.0.0
+  smooth_page_indicator: ^1.0.0+2
+  awesome_icons: ^1.1.0
+  google_maps: ^6.2.0
+  google_maps_flutter: ^2.2.1
+  image_picker: ^0.8.6
+  cached_network_image: ^3.2.1
+  permission_handler: ^10.1.0
+  flutter_form_validator: ^0.0.2
+  form_field_validator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -62,8 +71,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
+    - assets/icon/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

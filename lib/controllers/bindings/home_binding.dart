@@ -5,9 +5,7 @@ import 'package:tourism/data/data.dart';
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<FeedController>(
-      () => FeedController(),
-    );
+    Get.put(FeedController());
     Get.lazyPut<AuthApi>(
       () => AuthApi(),
     );
