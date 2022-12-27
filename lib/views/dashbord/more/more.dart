@@ -43,7 +43,7 @@ class MoreView extends StatelessWidget {
             const SizedBox(height: 30),
             MoreTile(
               onTap: () {
-                Get.toNamed(Routes.order);
+                Get.toNamed(Routes.myorder);
               },
               leading: "assets/icon/order.png",
               title: local.myorder,

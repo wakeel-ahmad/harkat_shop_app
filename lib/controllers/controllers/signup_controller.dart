@@ -6,10 +6,13 @@ import 'package:tourism/data/apis/base_api.dart';
 import 'package:tourism/routes/routes.dart';
 
 class SignUpController extends GetxController {
+  RxBool isloading = RxBool(false);
+
   final formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastnameController = TextEditingController();
   final emailController = TextEditingController();
-  final phomeController = TextEditingController();
+  final phoneController = TextEditingController();
   final addressController = TextEditingController();
   final passwordController = TextEditingController();
   final conformPasswordController = TextEditingController();
@@ -18,9 +21,9 @@ class SignUpController extends GetxController {
     if (formKey.currentState!.validate()) {
       var api = Get.find<AppApi>();
       var res = await api.post("/signup", {
-        'name': nameController.text.trim(),
+        'name': firstNameController.text.trim(),
         'email': emailController.text.trim(),
-        'number': phomeController.text.trim(),
+        'number': phoneController.text.trim(),
         'address': addressController.text.trim(),
         'password': passwordController.text.trim(),
         'conform_Password': conformPasswordController.text.trim(),

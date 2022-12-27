@@ -30,7 +30,7 @@ ksucessSnackBar(BuildContext context, String message) {
         borderSide: BorderSide.none,
         borderRadius: BorderRadius.circular(10),
       ),
-      backgroundColor: ThemeColors.instance.primaryColor,
+      backgroundColor: ThemeColors.instance.primaryColor.withOpacity(0.8),
       content: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(message),

@@ -103,6 +103,8 @@
   "sucess": "Sucess",
   "login": "Login",
   "signup": "Sign Up",
+  "passwordlength6ormore": "Password Length Must be 6 or more",
+  "entervalidemial": "Please enter a valid email",
   "create": "Create",
   "loginasdriver": "Login As Driver",
   "loginasuser": "Login As User",
@@ -119,6 +121,8 @@
   "newpassword":"New Password",
   "newpasswordtext":"Please enter your email to receive a  link to  create a new password via email",
   "name": "Name",
+  "firstname": "First Name",
+  "lastname": "Last Name",
   "email": "Email",
   "password": "Password",
   "dob": "DOB",
@@ -130,5 +134,4 @@
   "electronics": "Electronics",
   "choseaplace": "Chose a save place",
   "searchaddress": "search address"
-
 }

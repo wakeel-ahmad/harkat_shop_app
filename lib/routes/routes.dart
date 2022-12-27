@@ -7,7 +7,6 @@ import 'package:tourism/views/auth/new_password.dart';
 import 'package:tourism/views/auth/otp.dart';
 import 'package:tourism/views/auth/reset_password.dart';
 import 'package:tourism/views/auth/signup.dart';
-import 'package:tourism/views/cart/cart.dart';
 import 'package:tourism/views/change_address/change_address.dart';
 import 'package:tourism/views/checkout/checkout.dart';
 import 'package:tourism/views/dashbord/dashbord.dart';
@@ -49,7 +48,7 @@ abstract class Routes {
   static const String profile = '/profile';
   static const String more = '/more';
   static const String paymet = '/paymet';
-  static const String order = '/order';
+  static const String myorder = '/order';
   static const String checkout = '/checkout';
   static const String changeaddress = '/change_address';
   static const String finalorder = '/final_order';
@@ -134,10 +133,6 @@ class AppPages {
       page: () => ExploreProductView(),
     ),
     GetPage(
-      name: Routes.cart,
-      page: () => CartView(),
-    ),
-    GetPage(
       name: Routes.profile,
       page: () => ProfileView(),
     ),
@@ -150,7 +145,7 @@ class AppPages {
       page: () => PaymetView(),
     ),
     GetPage(
-      name: Routes.order,
+      name: Routes.myorder,
       page: () => MyOrderView(),
     ),
     GetPage(

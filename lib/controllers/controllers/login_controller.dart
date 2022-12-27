@@ -6,6 +6,9 @@ import 'package:tourism/data/apis/base_api.dart';
 import 'package:tourism/routes/routes.dart';
 
 class LoginController extends GetxController {
+  RxBool isloading = RxBool(false);
+  RxBool indicator = RxBool(false);
+
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();

@@ -5,6 +5,7 @@ import 'package:tourism/components/button.dart';
 import 'package:tourism/components/linearGradient.dart';
 import 'package:tourism/components/snack_bars/snackbar.dart';
 import 'package:tourism/core/core.dart';
+import 'package:tourism/routes/routes.dart';
 
 class ExploreProductView extends StatelessWidget {
   const ExploreProductView({Key? key}) : super(key: key);
@@ -47,7 +48,9 @@ class ExploreProductView extends StatelessWidget {
                         ),
                         const SizedBox(width: 20),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(Routes.myorder);
+                          },
                           icon: const Icon(
                             Icons.shopping_cart_outlined,
                             color: Colors.white,
@@ -246,20 +249,24 @@ class ExploreProductView extends StatelessWidget {
                           top: 50,
                           right: 10,
                           child: Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                              boxShadow: [
-                                kBoxShadow(),
-                              ],
-                            ),
-                            child: Icon(
-                              Icons.shopping_cart,
-                              size: 30,
-                              color: ThemeColors.instance.primaryColor,
-                            ),
-                          ),
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                                boxShadow: [
+                                  kBoxShadow(),
+                                ],
+                              ),
+                              child: IconButton(
+                                onPressed: () {
+                                  Get.toNamed(Routes.myorder);
+                                },
+                                icon: Icon(
+                                  Icons.shopping_cart,
+                                  size: 30,
+                                  color: ThemeColors.instance.primaryColor,
+                                ),
+                              )),
                         )
                       ],
                     ),
