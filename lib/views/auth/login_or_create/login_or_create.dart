@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginOrCreateView extends StatelessWidget {
   const LoginOrCreateView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -25,8 +27,8 @@ class LoginOrCreateView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    const Text(
-                      "Discover the best goods from over 1,000 shops and fast delivery to your doorstep",
+                    Text(
+                      local!.discoverthebestgoods,
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 30),
@@ -34,14 +36,14 @@ class LoginOrCreateView extends StatelessWidget {
                       onPressed: () {
                         Get.offAndToNamed(Routes.login);
                       },
-                      name: "login",
+                      name: local.login,
                     ),
                     SizedBox(height: 20),
                     kbutton(
                       onPressed: () {
                         Get.offAndToNamed(Routes.signup);
                       },
-                      name: "Create An Account",
+                      name: local.signup,
                       isBorder: true,
                     ),
                   ],

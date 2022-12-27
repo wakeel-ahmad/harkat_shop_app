@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tourism/core/theme/theme_colors.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UserTypeView extends StatelessWidget {
   const UserTypeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -17,17 +19,18 @@ class UserTypeView extends StatelessWidget {
             children: [
               Image.asset(
                 "assets/images/logo.png",
-                scale: 1.5,
+                scale: 1,
               ),
               SizedBox(height: Get.size.height / 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
-                  Text("English", style: Theme.of(context).textTheme.button),
+                      onPressed: () {}, icon: const Icon(Icons.arrow_back_ios)),
+                  Text("Arabic", style: Theme.of(context).textTheme.button),
                   IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+                      onPressed: () {},
+                      icon: const Icon(Icons.arrow_forward_ios)),
                 ],
               ),
               SizedBox(height: Get.size.height / 10),
@@ -38,15 +41,15 @@ class UserTypeView extends StatelessWidget {
                     onTab: () {
                       Get.toNamed(Routes.finddeal);
                     },
-                    label: "Login as a user",
+                    label: local!.loginasuser,
                     icon: Icons.person,
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   UserTypeContainer(
                     onTab: () {
                       Get.toNamed(Routes.finddeal);
                     },
-                    label: "Login as a merchant",
+                    label: local.loginasdriver,
                     icon: Icons.store_mall_directory_outlined,
                   ),
                 ],
@@ -88,7 +91,7 @@ class UserTypeContainer extends StatelessWidget {
               size: 35,
               color: ThemeColors.instance.primaryColor,
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               label,
               textAlign: TextAlign.center,

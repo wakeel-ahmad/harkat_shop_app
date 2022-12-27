@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:tourism/components/boxShadow.dart';
 import 'package:tourism/components/button.dart';
@@ -22,7 +20,7 @@ class ExploreProductView extends StatelessWidget {
               Container(
                 height: Get.size.height / 3,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
                     image: AssetImage("assets/images/food1.jpg"),
@@ -47,7 +45,7 @@ class ExploreProductView extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(width: 20),
+                        const SizedBox(width: 20),
                         IconButton(
                           onPressed: () {},
                           icon: const Icon(
@@ -85,7 +83,7 @@ class ExploreProductView extends StatelessWidget {
                         children: [
                           Text("Tandoori Chicken Pizza",
                               style: Theme.of(context).textTheme.headline4),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Row(
                             children: [
                               for (int i = 0; i < 5; i++)
@@ -93,11 +91,11 @@ class ExploreProductView extends StatelessWidget {
                                     color: ThemeColors.instance.primaryColor),
                             ],
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("5 Star Ratings"),
+                              Text("5 Ratings"),
                               RichText(
                                 text: const TextSpan(
                                   children: [
@@ -116,39 +114,39 @@ class ExploreProductView extends StatelessWidget {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     TextSpan(
-                                        text: '  /per Unit',
+                                        text: '  /per unit',
                                         style: TextStyle(color: Colors.black)),
                                   ],
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text("Description",
                               style: Theme.of(context).textTheme.button),
-                          SizedBox(height: 5),
-                          Text(
+                          const SizedBox(height: 5),
+                          const Text(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare leo non mollis id cursus. Eu euismod faucibus in leo malesuada"),
-                          SizedBox(height: 10),
-                          Divider(),
+                          const SizedBox(height: 10),
+                          const Divider(),
                           Text("Customize your Order",
                               style: Theme.of(context).textTheme.button),
                           const SizedBox(height: 10),
-                          CartDrowpDownMenu(),
+                          const CartDrowpDownMenu(),
                           const SizedBox(height: 5),
-                          CartDrowpDownMenu(),
+                          const CartDrowpDownMenu(),
                           const SizedBox(height: 5),
                           Row(
                             children: [
                               Text("Number of Portions",
                                   style: Theme.of(context).textTheme.button),
-                              Spacer(),
+                              const Spacer(),
                               kbutton(
                                 onPressed: () {},
                                 name: "-",
                                 width: 50,
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Container(
                                 alignment: Alignment.center,
                                 width: 60,
@@ -158,15 +156,15 @@ class ExploreProductView extends StatelessWidget {
                                     border: Border.all(
                                       color: ThemeColors.instance.primaryColor,
                                     ),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(50))),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50))),
                                 child: Text(
                                   "1",
                                   style:
                                       Theme.of(Get.context!).textTheme.button,
                                 ),
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               kbutton(
                                 onPressed: () {},
                                 name: "+",
@@ -177,7 +175,7 @@ class ExploreProductView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Stack(
                       children: [
                         Container(
@@ -185,7 +183,7 @@ class ExploreProductView extends StatelessWidget {
                           width: 100,
                           decoration: BoxDecoration(
                             color: ThemeColors.instance.primaryColor,
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topRight: Radius.circular(50),
                               bottomRight: Radius.circular(50),
                             ),
@@ -193,7 +191,7 @@ class ExploreProductView extends StatelessWidget {
                         ),
                         Container(
                           alignment: Alignment.center,
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 20),
                           height: 130,
                           width: double.infinity,
@@ -212,7 +210,7 @@ class ExploreProductView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text("Total Price"),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               RichText(
                                 text: const TextSpan(
                                   children: [
@@ -236,7 +234,7 @@ class ExploreProductView extends StatelessWidget {
                               kbutton(
                                 onPressed: () {
                                   ksucessSnackBar(
-                                      context, "Add To Cart SucessFully");
+                                      context, "Add To Cart Sucessfully");
                                 },
                                 name: "Add To Cart",
                                 width: 150,
@@ -248,7 +246,7 @@ class ExploreProductView extends StatelessWidget {
                           top: 50,
                           right: 10,
                           child: Container(
-                            padding: EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.white,
@@ -282,14 +280,14 @@ class CartDrowpDownMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.black12,
         borderRadius: BorderRadius.circular(3),
       ),
       child: DropdownButton(
         borderRadius: BorderRadius.circular(3),
-        underline: SizedBox(),
+        underline: const SizedBox(),
         isExpanded: true,
         value: '1',
         items: [

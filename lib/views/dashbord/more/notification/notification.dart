@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationView extends StatelessWidget {
   const NotificationView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -22,7 +24,7 @@ class NotificationView extends StatelessWidget {
                 ),
                 SizedBox(width: 20),
                 Text(
-                  'Notifications',
+                  local!.notification,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Spacer(),

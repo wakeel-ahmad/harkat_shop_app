@@ -6,14 +6,16 @@ import 'package:tourism/components/button.dart';
 import 'package:tourism/components/boxShadow.dart';
 import 'package:tourism/core/theme/theme_colors.dart';
 import 'package:tourism/routes/routes.dart';
-import 'package:tourism/views/dashbord/more/order/order.dart';
+import 'package:tourism/views/dashbord/more/order/my_order.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckOutView extends StatelessWidget {
-  const CheckOutView({Key? key}) : super(key: key);
+  CheckOutView({Key? key}) : super(key: key);
 
+  bool val = true;
   @override
   Widget build(BuildContext context) {
-    bool val = true;
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -37,13 +39,13 @@ class CheckOutView extends StatelessWidget {
                       ),
                       SizedBox(width: 20),
                       Text(
-                        'Check Out',
+                        local!.checkout,
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ],
                   ),
                   SizedBox(height: 30),
-                  Text("Delivery Address"),
+                  Text(local.deliveryaddress),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +53,7 @@ class CheckOutView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Al Ain, Mazyed ",
+                          Text(local.address,
                               style: Theme.of(context).textTheme.button),
                           Text("East, Vila 11216",
                               style: Theme.of(context).textTheme.button),
@@ -61,7 +63,7 @@ class CheckOutView extends StatelessWidget {
                         onPressed: () {
                           Get.toNamed(Routes.changeaddress);
                         },
-                        child: Text("Change"),
+                        child: Text(local.change),
                       )
                     ],
                   ),
@@ -81,7 +83,7 @@ class CheckOutView extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        const Text("Payment method"),
+                        Text(local.paymetmethod),
                         Spacer(),
                         const Icon(
                           Icons.add,
@@ -91,8 +93,8 @@ class CheckOutView extends StatelessWidget {
                           onTap: () {
                             addCardBottomSheet(context: context);
                           },
-                          child: const Text(
-                            "Add Card",
+                          child: Text(
+                            local.addcard,
                             style: TextStyle(color: Colors.blue),
                           ),
                         ),
@@ -101,7 +103,7 @@ class CheckOutView extends StatelessWidget {
                   ),
                   PaymetMethodTile(
                     icon: "assets/icon/paymet.png",
-                    label: "Cash on delivery",
+                    label: local.cashondelivery,
                     value: val,
                     onChanged: (val) {
                       val = val;
@@ -115,14 +117,14 @@ class CheckOutView extends StatelessWidget {
                       val = val;
                     },
                   ),
-                  PaymetMethodTile(
-                    icon: "assets/icon/pp.png",
-                    label: "s.m.k.alshamisi@email.com",
-                    value: val,
-                    onChanged: (val) {
-                      val = val;
-                    },
-                  ),
+                  // PaymetMethodTile(
+                  //   icon: "assets/icon/pp.png",
+                  //   label: "s.m.k.alshamisi@email.com",
+                  //   value: val,
+                  //   onChanged: (val) {
+                  //     val = val;
+                  //   },
+                  // ),
                 ],
               ),
             ),
@@ -136,23 +138,23 @@ class CheckOutView extends StatelessWidget {
               child: Column(
                 children: [
                   OrderTile(
-                    label: "Sub Total",
+                    label: local.subtotal,
                     value: "AED 68",
                     color: ThemeColors.instance.primaryColor,
                   ),
                   OrderTile(
-                    label: "Delivery Cost",
+                    label: local.deliverycost,
                     value: "AED 68",
                     color: ThemeColors.instance.primaryColor,
                   ),
                   OrderTile(
-                    label: "Discount",
+                    label: local.discount,
                     value: "- \$8",
                     color: ThemeColors.instance.primaryColor,
                   ),
                   const Divider(),
                   OrderTile(
-                    label: "Total",
+                    label: local.total,
                     value: "AED 68.25",
                     color: ThemeColors.instance.primaryColor,
                   ),
@@ -163,9 +165,12 @@ class CheckOutView extends StatelessWidget {
             kbutton(
               width: Get.size.width / 1.1,
               onPressed: () {
-                sendOrderBottomSheet(context: context);
+                sendOrderBottomSheet(
+                  context: context,
+                  local: local,
+                );
               },
-              name: "Send Order",
+              name: local.sendorder,
             ),
           ],
         ),

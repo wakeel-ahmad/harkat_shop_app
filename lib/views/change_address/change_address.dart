@@ -1,23 +1,24 @@
-import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tourism/components/input_decoraion.dart';
 import 'package:tourism/core/theme/theme_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChangeAddressview extends StatelessWidget {
   const ChangeAddressview({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
-            GoogleMap(
+            const GoogleMap(
               initialCameraPosition: CameraPosition(
-                target: LatLng(30.67664746721837, 73.64766092851153),
-                zoom: 14.5,
+                target: LatLng(30.6737492, 73.653722),
+                zoom: 14,
               ),
             ),
             Positioned(
@@ -25,7 +26,7 @@ class ChangeAddressview extends StatelessWidget {
               child: Container(
                 height: 70,
                 width: Get.size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                 ),
                 child: Row(
@@ -34,11 +35,11 @@ class ChangeAddressview extends StatelessWidget {
                       onPressed: () {
                         Get.back();
                       },
-                      icon: Icon(Icons.arrow_back_ios),
+                      icon: const Icon(Icons.arrow_back_ios),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Text(
-                      'Change Address',
+                      local!.changeaddress,
                       style: Theme.of(context).textTheme.headline6,
                     ),
                   ],
@@ -56,7 +57,7 @@ class ChangeAddressview extends StatelessWidget {
                   children: [
                     TextFormField(
                       decoration: kinputDecoration(
-                        hintText: "Search Address",
+                        hintText: local.searchaddress,
                       ),
                     ),
                     SizedBox(height: 10),
@@ -75,7 +76,7 @@ class ChangeAddressview extends StatelessWidget {
                           color: ThemeColors.instance.primaryColor,
                         ),
                       ),
-                      title: Text("Choose a saved place"),
+                      title: Text(local.choseaplace),
                       trailing: Icon(Icons.arrow_forward_ios_outlined),
                     ),
                   ],

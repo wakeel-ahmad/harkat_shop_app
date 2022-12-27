@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/components/input_decoraion.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NewPasswordView extends StatelessWidget {
-  const NewPasswordView({Key? key}) : super(key: key);
+  NewPasswordView({Key? key}) : super(key: key);
 
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
@@ -15,12 +17,13 @@ class NewPasswordView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("New Password", style: Theme.of(context).textTheme.headline5),
+            Text(local!.newpassword,
+                style: Theme.of(context).textTheme.headline5),
             SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Text(
-                "Please enter your email to receive a link to  create a new password via email",
+                local.chechemailtext,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -30,12 +33,13 @@ class NewPasswordView extends StatelessWidget {
               child: Column(
                 children: [
                   TextFormField(
-                    decoration: inputDecoration(hintText: "New Password"),
+                    decoration: inputDecoration(hintText: local.newpassword),
                     // controller: controller.emailController,
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    decoration: inputDecoration(hintText: "Confirm Password"),
+                    decoration:
+                        inputDecoration(hintText: local.conformpassword),
                     // controller: controller.emailController,
                   ),
                   SizedBox(height: 50),
@@ -44,7 +48,7 @@ class NewPasswordView extends StatelessWidget {
             ),
             kbutton(
               onPressed: () {},
-              name: "Next",
+              name: local.next,
             ),
           ],
         ),

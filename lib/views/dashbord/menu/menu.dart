@@ -5,77 +5,83 @@ import 'package:tourism/components/boxShadow.dart';
 import 'package:tourism/components/input_decoraion.dart';
 import 'package:tourism/core/core.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MenuView extends StatelessWidget {
-  const MenuView({Key? key}) : super(key: key);
+  MenuView({Key? key}) : super(key: key);
+  final images = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBwy-MxeHZRqKAPakZo4Kxw7Eh0v2m74eWZAiracS-Zn99P8N0tBakqT9ERdWmRCnLjQM&usqp=CAU',
+    'https://st2.depositphotos.com/4009549/8292/i/450/depositphotos_82929960-stock-photo-herbs-mix-with-tomatoes-lemon.jpg',
+    'https://c4.wallpaperflare.com/wallpaper/205/168/868/dinner-food-pie-pizza-wallpaper-preview.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBwy-MxeHZRqKAPakZo4Kxw7Eh0v2m74eWZAiracS-Zn99P8N0tBakqT9ERdWmRCnLjQM&usqp=CAU',
+    'https://st2.depositphotos.com/4009549/8292/i/450/depositphotos_82929960-stock-photo-herbs-mix-with-tomatoes-lemon.jpg',
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final images = [
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBwy-MxeHZRqKAPakZo4Kxw7Eh0v2m74eWZAiracS-Zn99P8N0tBakqT9ERdWmRCnLjQM&usqp=CAU',
-      'https://st2.depositphotos.com/4009549/8292/i/450/depositphotos_82929960-stock-photo-herbs-mix-with-tomatoes-lemon.jpg',
-      'https://c4.wallpaperflare.com/wallpaper/205/168/868/dinner-food-pie-pizza-wallpaper-preview.jpg',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBwy-MxeHZRqKAPakZo4Kxw7Eh0v2m74eWZAiracS-Zn99P8N0tBakqT9ERdWmRCnLjQM&usqp=CAU',
-      'https://st2.depositphotos.com/4009549/8292/i/450/depositphotos_82929960-stock-photo-herbs-mix-with-tomatoes-lemon.jpg',
-    ];
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Menu',
-                    style: Theme.of(context).textTheme.headline6,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      local!.menu,
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.shopping_cart_outlined,
+                          color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  decoration: kinputDecoration(
+                    hintText: local.searchitems,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.shopping_cart_outlined,
-                        color: Colors.black),
+                ),
+              ),
+              SizedBox(height: 20),
+              Stack(
+                children: [
+                  Container(
+                    width: 80,
+                    height: 515,
+                    decoration: BoxDecoration(
+                      color: ThemeColors.instance.primaryColor,
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(50),
+                        bottomRight: Radius.circular(50),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: List.generate(
+                      images.length,
+                      (index) {
+                        return MenuTile(
+                          onTap: () => Get.toNamed(Routes.exploreMenu),
+                          img: images[index],
+                          label: local.foodcategory,
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextFormField(
-                decoration: kinputDecoration(
-                  hintText: "search items",
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Stack(
-              children: [
-                Container(
-                  width: 80,
-                  height: 515,
-                  decoration: BoxDecoration(
-                    color: ThemeColors.instance.primaryColor,
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
-                    ),
-                  ),
-                ),
-                Column(
-                  children: List.generate(
-                    images.length,
-                    (index) {
-                      return MenuTile(
-                        img: images[index],
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -86,16 +92,18 @@ class MenuTile extends StatelessWidget {
   const MenuTile({
     Key? key,
     required this.img,
+    required this.onTap,
+    required this.label,
   }) : super(key: key);
 
   final String? img;
+  final String? label;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.toNamed(Routes.exploreMenu);
-      },
+      onTap: onTap,
       child: Stack(
         children: [
           Container(
@@ -114,7 +122,7 @@ class MenuTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Beverages", style: Theme.of(context).textTheme.headline6),
+                Text(label!, style: Theme.of(context).textTheme.headline6),
                 SizedBox(height: 10),
                 Text("Food"),
               ],

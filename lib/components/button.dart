@@ -6,6 +6,7 @@ ElevatedButton kbutton({
   VoidCallback? onPressed,
   double? width,
   String name = "Next",
+  double? labelSize,
   bool isBorder = false,
 }) {
   return ElevatedButton(
@@ -19,12 +20,13 @@ ElevatedButton kbutton({
               : BorderSide.none,
         ),
         primary: isBorder ? Colors.white : ThemeColors.instance.primaryColor,
-        fixedSize: Size(width ?? Get.size.width, 45),
+        fixedSize: Size(width ?? Get.size.width * 0.9, 50),
       ),
       onPressed: onPressed ?? () {},
       child: Text(
         name,
         style: Theme.of(Get.context!).textTheme.button!.copyWith(
+              fontSize: labelSize ?? 18,
               color:
                   isBorder ? ThemeColors.instance.primaryColor : Colors.white,
             ),
@@ -44,7 +46,7 @@ ElevatedButton kIconButton({
         borderRadius: BorderRadius.circular(30),
       ),
       primary: color ?? ThemeColors.instance.primaryColor,
-      fixedSize: Size(width ?? Get.size.width, 45),
+      fixedSize: Size(width ?? Get.size.width, 50),
     ),
     onPressed: onPressed ?? () {},
     icon: Icon(icon),

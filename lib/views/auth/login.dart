@@ -7,12 +7,14 @@ import 'package:tourism/components/input_decoraion.dart';
 import 'package:tourism/controllers/controllers.dart';
 import 'package:tourism/core/core.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -22,70 +24,89 @@ class LoginView extends GetView<LoginController> {
               key: controller.formKey,
               child: Column(
                 children: [
-                  Text("Log In", style: Theme.of(context).textTheme.headline5),
+                  Text(local!.login,
+                      style: Theme.of(context).textTheme.headline5),
                   SizedBox(height: 10),
-                  Text("Add your details to log in"),
+                  Text(local.addyourdeatiltosignin),
                   SizedBox(height: 50),
                   TextFormField(
-                    decoration: inputDecoration(hintText: "Your Email"),
+                    decoration: inputDecoration(hintText: local.email),
                     controller: controller.emailController,
+                    validator: ((value) {
+                      if (value == null || value.isEmpty) {
+                        return local.require;
+                      } else {
+                        return null;
+                      }
+                    }),
                   ),
                   SizedBox(height: 20),
                   TextFormField(
                     obscureText: true,
-                    decoration: inputDecoration(hintText: "Password"),
+                    decoration: inputDecoration(hintText: local.password),
                     controller: controller.passwordController,
+                    validator: ((value) {
+                      if (value == null || value.isEmpty) {
+                        return local.require;
+                      } else {
+                        return null;
+                      }
+                    }),
                   ),
                   SizedBox(height: 30),
                   kbutton(
                     onPressed: () {},
-                    name: " Login as Guest",
+                    name: local.loginasgest,
                   ),
                   SizedBox(height: 10),
                   kbutton(
                     onPressed: () {
-                      Get.offAndToNamed(Routes.pageSlider);
+                      if (controller.formKey.currentState!.validate()) {
+                        Get.offAndToNamed(Routes.pageSlider);
+                      }
                     },
-                    name: "Login",
+                    name: local.login,
                   ),
                   SizedBox(height: 20),
                   GestureDetector(
                     onTap: () => Get.toNamed(Routes.resetpassword),
-                    child: Text("Forget Your Password",
+                    child: Text(local.forgetpassword,
                         style: Theme.of(context).textTheme.button),
                   ),
                   SizedBox(height: 10),
-                  Text("or"),
+                  Text(local.or),
                   SizedBox(height: 10),
-                  Text("Login With", style: Theme.of(context).textTheme.button),
+                  Text(local.loginwith,
+                      style: Theme.of(context).textTheme.button),
                   SizedBox(height: 30),
                   kIconButton(
                     onPressed: () {},
-                    name: "Login With Facebook",
+                    name: local.loginwithfb,
                     color: ThemeColors.instance.secondryColor,
                     icon: FontAwesomeIcons.facebookF,
                   ),
                   SizedBox(height: 20),
                   kIconButton(
                     onPressed: () {},
-                    name: "Login With Google",
+                    name: local.loginwithgoogle,
                     color: ThemeColors.instance.redColor,
                     icon: FontAwesomeIcons.googlePlusG,
                   ),
                   SizedBox(height: 80),
                   RichText(
                     text: TextSpan(children: [
-                      const TextSpan(
-                          text: "Dont have Account?  ",
-                          style: TextStyle(color: Colors.black)),
+                      TextSpan(
+                          text: "${local.donthaveanacc}   ",
+                          style: const TextStyle(color: Colors.black)),
                       TextSpan(
                           recognizer: TapGestureRecognizer()
                             ..onTap = (() => Get.toNamed(Routes.signup)),
-                          text: "Sign Up",
-                          style: Theme.of(context)
-                              .textTheme
-                              .button!
-                              .copyWith(color: Colors.red)),
+                          text: local.signup,
+                          style: Theme.of(context).textTheme.button!.copyWith(
+                                color: Colors.red,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              )),
                     ]),
                   ),
                 ],

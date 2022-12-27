@@ -6,12 +6,14 @@ import 'package:tourism/controllers/controllers.dart';
 import 'package:tourism/core/theme/theme_colors.dart';
 import 'package:tourism/models/category/category.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeView extends GetView<FeedController> {
   const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -24,7 +26,7 @@ class HomeView extends GetView<FeedController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Good Morning @user',
+                      '${local!.welcome} @user',
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     IconButton(
@@ -34,14 +36,14 @@ class HomeView extends GetView<FeedController> {
                     )
                   ],
                 ),
-                const Text("Delivering to"),
+                Text(local.deliveringto),
                 const SizedBox(height: 5),
-                Text("Current Location",
+                Text(local.currentlocation,
                     style: Theme.of(context).textTheme.titleLarge),
                 SizedBox(height: 10),
                 TextFormField(
                   decoration: kinputDecoration(
-                    hintText: "search items",
+                    hintText: local.searchitems,
                   ),
                 ),
                 SingleChildScrollView(
@@ -69,7 +71,7 @@ class HomeView extends GetView<FeedController> {
                                 ),
                               ),
                               const SizedBox(height: 5),
-                              const Text("Labels"),
+                              Text(local.foodcategory),
                             ],
                           ),
                         );
@@ -83,12 +85,12 @@ class HomeView extends GetView<FeedController> {
 
                 Row(
                   children: [
-                    Text("Popular Shopes",
+                    Text(local.popularshops,
                         style: Theme.of(context).textTheme.headline6),
                     const Spacer(),
                     TextButton(
                       onPressed: () {},
-                      child: Text("View all"),
+                      child: Text(local.viewall),
                     ),
                     SizedBox(height: 10),
                   ],
@@ -126,7 +128,7 @@ class HomeView extends GetView<FeedController> {
                                   color: ThemeColors.instance.primaryColor),
                               Text("4.9 ",
                                   style: Theme.of(context).textTheme.button),
-                              Text("(124 ratings) ",
+                              Text("(124 ${local.rating}) ",
                                   style: Theme.of(context).textTheme.button),
                               Text("Cafe ",
                                   style: Theme.of(context).textTheme.button),
@@ -145,12 +147,12 @@ class HomeView extends GetView<FeedController> {
                 SizedBox(height: 20),
                 Row(
                   children: [
-                    Text("Most Popular",
+                    Text(local.mostpopular,
                         style: Theme.of(context).textTheme.headline6),
                     Spacer(),
                     TextButton(
                       onPressed: () {},
-                      child: Text("View all"),
+                      child: Text(local.viewall),
                     ),
                     SizedBox(height: 10),
                   ],
@@ -188,7 +190,7 @@ class HomeView extends GetView<FeedController> {
                                     color: ThemeColors.instance.primaryColor),
                                 Text("4.9",
                                     style: Theme.of(context).textTheme.button),
-                                Text("(124 ratings)",
+                                Text("(124 ${local.rating})",
                                     style: Theme.of(context).textTheme.button),
                                 Text("Cafe",
                                     style: Theme.of(context).textTheme.button),
@@ -208,12 +210,12 @@ class HomeView extends GetView<FeedController> {
 
                 Row(
                   children: [
-                    Text("Recent Items",
+                    Text(local.recentitem,
                         style: Theme.of(context).textTheme.headline6),
                     Spacer(),
                     TextButton(
                       onPressed: () {},
-                      child: Text("View all"),
+                      child: Text(local.viewall),
                     ),
                   ],
                 ),
@@ -249,7 +251,7 @@ class HomeView extends GetView<FeedController> {
                               children: [
                                 Icon(Icons.star,
                                     color: ThemeColors.instance.primaryColor),
-                                Text("4.9  (124 ratings)",
+                                Text("4.9  (124 ${local.rating})",
                                     style:
                                         Theme.of(context).textTheme.bodyText2),
                               ],

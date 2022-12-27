@@ -6,6 +6,7 @@ import 'package:tourism/components/input_decoraion.dart';
 import 'package:tourism/components/snack_bars/snackbar.dart';
 import 'package:tourism/controllers/controllers/profile_controller.dart';
 import 'package:tourism/core/utlis/validators.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileView extends StatelessWidget {
   ProfileView({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -22,39 +24,57 @@ class ProfileView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Profile',
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.shopping_cart_outlined,
-                          color: Colors.black),
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        local!.profile,
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.shopping_cart_outlined,
+                            color: Colors.black),
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(height: 10),
                 Obx(() {
-                  return Container(
-                    alignment: Alignment.center,
-                    height: 80,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      color: Colors.black12,
-                      shape: BoxShape.circle,
-                      image: ctrl.image.value.path.isNotEmpty
-                          ? DecorationImage(
-                              fit: BoxFit.cover,
-                              image: FileImage(ctrl.image.value),
-                            )
-                          : const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage("assets/icon/avatar.png"),
-                            ),
-                    ),
+                  return Stack(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          shape: BoxShape.circle,
+                          image: ctrl.image.value.path.isNotEmpty
+                              ? DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: FileImage(ctrl.image.value),
+                                )
+                              : const DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage("assets/icon/avatar.png"),
+                                ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: GestureDetector(
+                          onTap: () {
+                            ctrl.getImage();
+                          },
+                          child: const Icon(
+                            Icons.camera_alt,
+                          ),
+                        ),
+                      ),
+                    ],
                   );
                 }),
                 SizedBox(height: 5),
@@ -64,19 +84,18 @@ class ProfileView extends StatelessWidget {
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(Icons.edit),
-                      SizedBox(height: 5),
-                      Text("Edit Profile"),
+                    children: [
+                      const Icon(Icons.edit),
+                      const SizedBox(height: 5),
+                      Text(local.editprofile),
                     ],
                   ),
                 ),
                 SizedBox(height: 5),
-                Text("Hi There User!",
-                    style: Theme.of(context).textTheme.button),
+                Text(local.hiuser, style: Theme.of(context).textTheme.button),
                 TextButton(
                   onPressed: () {},
-                  child: Text("Sign Out"),
+                  child: Text(local.signout),
                 ),
                 SizedBox(height: 15),
                 Form(
@@ -85,9 +104,8 @@ class ProfileView extends StatelessWidget {
                     children: [
                       TextFormField(
                         controller: ctrl.nameController,
-                        decoration: inputDecoration(hintText: "Mr Saeed"),
-                        validator: RequiredValidator(
-                            errorText: 'this field is required'),
+                        decoration: inputDecoration(hintText: local.mrxyz),
+                        validator: RequiredValidator(errorText: local.require),
                       ),
                       SizedBox(height: 5),
                       TextFormField(
@@ -105,8 +123,8 @@ class ProfileView extends StatelessWidget {
                       SizedBox(height: 5),
                       TextFormField(
                         controller: ctrl.addressController,
-                        decoration: inputDecoration(
-                            hintText: "No 23, 6th Al Nehyan Camp, Abu Dhabi"),
+                        decoration:
+                            inputDecoration(hintText: local.addresssample),
                       ),
                       SizedBox(height: 5),
                       TextFormField(
@@ -117,18 +135,17 @@ class ProfileView extends StatelessWidget {
                       SizedBox(height: 5),
                       TextFormField(
                         controller: ctrl.genderController,
-                        decoration: inputDecoration(hintText: "Gender"),
+                        decoration: inputDecoration(hintText: local.male),
                       ),
                       SizedBox(height: 5),
                       TextFormField(
                         controller: ctrl.passwordController,
-                        decoration: inputDecoration(hintText: "Password"),
+                        decoration: inputDecoration(hintText: "*********"),
                       ),
                       SizedBox(height: 5),
                       TextFormField(
                         controller: ctrl.conformPasswordController,
-                        decoration:
-                            inputDecoration(hintText: "Confirm Password"),
+                        decoration: inputDecoration(hintText: "*********"),
                       ),
                       SizedBox(height: 10),
                     ],
@@ -141,16 +158,27 @@ class ProfileView extends StatelessWidget {
                     }
                     // kerrorSnackBar(context, "message");
                   },
-                  name: "save",
+                  name: local.save,
                 ),
+                SizedBox(height: Get.size.height * 0.03),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    kbutton(name: "Fazaa", width: 120),
-                    kbutton(name: "Isaad", width: 120),
-                    kbutton(name: "Humat Al Watan", width: 130),
+                    kbutton(
+                        name: local.fazza,
+                        labelSize: 11,
+                        width: Get.size.width * 0.3),
+                    kbutton(
+                        name: local.isaad,
+                        labelSize: 11,
+                        width: Get.size.width * 0.3),
+                    kbutton(
+                        name: local.humatalwatan,
+                        labelSize: 11,
+                        width: Get.size.width * 0.3),
                   ],
-                )
+                ),
+                SizedBox(height: Get.size.height * 0.03)
               ],
             ),
           ),

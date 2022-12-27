@@ -4,14 +4,15 @@ import 'package:get/get.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/components/input_decoraion.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpView extends StatelessWidget {
-  const SignUpView({Key? key}) : super(key: key);
+  SignUpView({Key? key}) : super(key: key);
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -19,9 +20,10 @@ class SignUpView extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: Column(
               children: [
-                Text("Sign Up", style: Theme.of(context).textTheme.headline5),
+                Text(local!.signup,
+                    style: Theme.of(context).textTheme.headline5),
                 SizedBox(height: 10),
-                Text("Add your details to sign up"),
+                Text(local.addyourdeatiltosignin),
                 SizedBox(height: 30),
                 Form(
                   key: _formKey,
@@ -30,33 +32,34 @@ class SignUpView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextFormField(
-                        decoration: inputDecoration(hintText: "Name"),
+                        decoration: inputDecoration(hintText: local.name),
                         // controller: controller.emailController,
                       ),
                       SizedBox(height: 20),
                       TextFormField(
-                        decoration: inputDecoration(hintText: "Email"),
+                        decoration: inputDecoration(hintText: local.name),
                         // controlle: controller.emailController,
                       ),
                       SizedBox(height: 20),
                       TextFormField(
-                        decoration: inputDecoration(hintText: "Mobile No"),
+                        decoration:
+                            inputDecoration(hintText: local.mobilenumber),
                         // controller: controller.emailController,
                       ),
                       SizedBox(height: 20),
                       TextFormField(
-                        decoration: inputDecoration(hintText: "Address"),
+                        decoration: inputDecoration(hintText: local.address),
                         // controller: controller.emailController,
                       ),
                       SizedBox(height: 20),
                       TextFormField(
-                        decoration: inputDecoration(hintText: "Password"),
+                        decoration: inputDecoration(hintText: local.password),
                         // controller: controller.emailController,
                       ),
                       SizedBox(height: 20),
                       TextFormField(
                         decoration:
-                            inputDecoration(hintText: "Confirm Password"),
+                            inputDecoration(hintText: local.conformpassword),
                         // controller: controller.emailController,
                       ),
                     ],
@@ -67,22 +70,23 @@ class SignUpView extends StatelessWidget {
                   onPressed: () {
                     Get.offAndToNamed(Routes.pageSlider);
                   },
-                  name: "Sign Up",
+                  name: local.signup,
                 ),
                 SizedBox(height: 50),
                 RichText(
                   text: TextSpan(children: [
-                    const TextSpan(
-                        text: "Already have an Account? ",
+                    TextSpan(
+                        text: " ${local.alreadyhaveacc}   ",
                         style: TextStyle(color: Colors.black)),
                     TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => Get.back(),
-                        text: "Login",
-                        style: Theme.of(context)
-                            .textTheme
-                            .button!
-                            .copyWith(color: Colors.red)),
+                        text: local.login,
+                        style: Theme.of(context).textTheme.button!.copyWith(
+                              color: Colors.red,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            )),
                   ]),
                 ),
               ],

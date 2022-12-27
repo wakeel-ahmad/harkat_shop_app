@@ -3,16 +3,18 @@ import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SliderView extends StatelessWidget {
   SliderView({Key? key}) : super(key: key);
   PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
           child: Stack(
             children: [
               PageView(
@@ -38,11 +40,11 @@ class SliderView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 50),
-                      Text("Find Good You Love",
+                      Text(local!.findgoodsforyou,
                           style: Theme.of(context).textTheme.headline5),
                       SizedBox(height: 30),
                       Text(
-                        "Discover the best goods from over many shops and fast delivery to your doorstep",
+                        local.discoverthebestgoods,
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -67,11 +69,11 @@ class SliderView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 50),
-                      Text("Fast Delivery",
+                      Text(local.fastdelivery,
                           style: Theme.of(context).textTheme.headline5),
                       SizedBox(height: 30),
                       Text(
-                        "Fast food delivery to your home, office wherever you are",
+                        local.fastfooddeliverytoyourhome,
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -96,15 +98,16 @@ class SliderView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 50),
-                      Text("Live Tracking",
+                      Text(local.livetracking,
                           style: Theme.of(context).textTheme.headline5),
                       SizedBox(height: 30),
                       Text(
-                        "Real time tracking of your food on the app once you placed the order",
+                        local.realtimetrackingofyourfood,
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 60),
                       kbutton(
+                        name: local.next,
                         onPressed: () {
                           Get.offAndToNamed(Routes.dashbord);
                         },

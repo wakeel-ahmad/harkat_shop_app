@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AboutView extends StatelessWidget {
-  const AboutView({Key? key}) : super(key: key);
+class AboutUsView extends StatelessWidget {
+  const AboutUsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
@@ -23,7 +25,7 @@ class AboutView extends StatelessWidget {
                   ),
                   const SizedBox(width: 20),
                   Text(
-                    'Desserts',
+                    local!.aboutus,
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   const Spacer(),

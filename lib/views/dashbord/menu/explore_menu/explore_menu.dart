@@ -26,7 +26,7 @@ class ExploreMenuView extends StatelessWidget {
                   ),
                   SizedBox(width: 20),
                   Text(
-                    'Desserts',
+                    'Food Category',
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   Spacer(),

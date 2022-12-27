@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tourism/components/bottom_sheets/addcard_sheet.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/core/core.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PaymetView extends StatelessWidget {
-  const PaymetView({Key? key}) : super(key: key);
+  PaymetView({Key? key}) : super(key: key);
 
+  final _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    final _key = GlobalKey<ScaffoldState>();
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -27,7 +28,7 @@ class PaymetView extends StatelessWidget {
                     ),
                     SizedBox(width: 20),
                     Text(
-                      'Payment Details',
+                      local!.paymetdetail,
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     Spacer(),
@@ -40,7 +41,7 @@ class PaymetView extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Customize your payment method',
+                  local.customizeyourpayment,
                   style: Theme.of(context).textTheme.button,
                 ),
                 SizedBox(height: 5),
@@ -54,9 +55,9 @@ class PaymetView extends StatelessWidget {
                 SizedBox(height: 20),
                 kbutton(
                   width: Get.size.width / 1.5,
-                  name: "Add Another Credit/Debit Card",
+                  name: local.addanothercredit,
                   onPressed: () {
-                    addCardBottomSheet(context: context);
+                    // addCardBottomSheet(context: context);
                   },
                 ),
               ],

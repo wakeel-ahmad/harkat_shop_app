@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-sendOrderBottomSheet({BuildContext? context}) {
+sendOrderBottomSheet({BuildContext? context, AppLocalizations? local}) {
   return showModalBottomSheet(
     backgroundColor: Colors.white,
     context: context!,
@@ -36,22 +37,22 @@ sendOrderBottomSheet({BuildContext? context}) {
                 Image.asset("assets/images/sucess.png", scale: 1),
                 SizedBox(height: 50),
                 Text(
-                  "Thank You!",
+                  local!.thankyou,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 5),
-                Text("for your order"),
+                Text(local.foryourorder),
                 SizedBox(height: 100),
                 kbutton(
                   width: Get.size.width / 1.3,
-                  name: "Track My Order",
+                  name: local.trackmyorder,
                 ),
                 SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
                     Get.offAndToNamed(Routes.dashbord);
                   },
-                  child: Text("Back To Home",
+                  child: Text(local.backtohome,
                       style: Theme.of(context).textTheme.button),
                 )
               ],

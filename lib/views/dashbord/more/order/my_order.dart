@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/core/core.dart';
 import 'package:tourism/routes/routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class OrderView extends StatelessWidget {
-  const OrderView({Key? key}) : super(key: key);
+class MyOrderView extends StatelessWidget {
+  const MyOrderView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -25,7 +27,7 @@ class OrderView extends StatelessWidget {
                 ),
                 SizedBox(width: 20),
                 Text(
-                  'My Order',
+                  local!.myorder,
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ],
@@ -48,7 +50,7 @@ class OrderView extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('King Burgers',
+                    Text(local.foodcategory,
                         style: Theme.of(context).textTheme.headline6),
                     Row(
                       children: [
@@ -66,8 +68,8 @@ class OrderView extends StatelessWidget {
                                 text: " ( 124 ",
                                 style: TextStyle(color: Colors.black),
                               ),
-                              const TextSpan(
-                                text: "rating )",
+                              TextSpan(
+                                text: local.rating,
                                 style: TextStyle(color: Colors.black),
                               ),
                             ],
@@ -98,10 +100,10 @@ class OrderView extends StatelessWidget {
                         Icon(Icons.maps_ugc,
                             color: ThemeColors.instance.primaryColor),
                         RichText(
-                          text: const TextSpan(
+                          text: TextSpan(
                             children: [
                               TextSpan(
-                                text: "No 03, 4th Lane, Newyork",
+                                text: local.address,
                                 style: TextStyle(color: Colors.black),
                               ),
                             ],
@@ -131,9 +133,9 @@ class OrderView extends StatelessWidget {
             ),
             Row(
               children: [
-                const Text(
-                  "Delivery Instrusctions",
-                  style: TextStyle(
+                Text(
+                  local.deliveryinstrusctions,
+                  style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
@@ -146,7 +148,7 @@ class OrderView extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Text(
-                    "Add Notes",
+                    local.addnote,
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
@@ -154,24 +156,24 @@ class OrderView extends StatelessWidget {
             ),
             Divider(),
             OrderTile(
-              label: "Sub Total",
+              label: local.subtotal,
               value: "AED 68",
               color: ThemeColors.instance.primaryColor,
             ),
             OrderTile(
-              label: "Delivery Cost",
+              label: local.deliverycost,
               value: "AED 68",
               color: ThemeColors.instance.primaryColor,
             ),
             OrderTile(
-              label: "VAT (5%)",
+              label: local.vatdiscount,
               value: "AED 68",
               color: ThemeColors.instance.primaryColor,
             ),
             Divider(),
 
             OrderTile(
-              label: "Total",
+              label: local.total,
               value: "AED 68.25",
               color: ThemeColors.instance.primaryColor,
             ),
@@ -181,7 +183,7 @@ class OrderView extends StatelessWidget {
               onPressed: () {
                 Get.toNamed(Routes.checkout);
               },
-              name: "Check Out",
+              name: local.checkout,
             ),
           ],
         ),

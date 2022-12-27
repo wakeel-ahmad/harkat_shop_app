@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/core/core.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OffersView extends StatelessWidget {
   const OffersView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -20,7 +22,7 @@ class OffersView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Latest Offers',
+                      local!.latestoffers,
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     IconButton(
@@ -31,11 +33,11 @@ class OffersView extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 10),
-                Text("Find discounts, Offers special meals and more!"),
+                Text(local.finddiscounts),
                 SizedBox(height: 20),
                 kbutton(
                   onPressed: () {},
-                  name: "Check Offers",
+                  name: local.checkOffers,
                   width: 200,
                 ),
                 SizedBox(height: 10),
@@ -59,7 +61,7 @@ class OffersView extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Text("Food Name By Harkat",
+                        Text(local.foodcategory,
                             style: Theme.of(context).textTheme.button),
                         Row(
                           children: [
@@ -67,7 +69,7 @@ class OffersView extends StatelessWidget {
                                 color: ThemeColors.instance.primaryColor),
                             Text("4.9",
                                 style: Theme.of(context).textTheme.button),
-                            Text("(124 ratings)",
+                            Text("(124 ${local.rating})",
                                 style: Theme.of(context).textTheme.button),
                             Text("Cafe",
                                 style: Theme.of(context).textTheme.button),

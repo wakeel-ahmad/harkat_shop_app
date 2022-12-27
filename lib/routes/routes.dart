@@ -17,13 +17,12 @@ import 'package:tourism/views/dashbord/more/about/about.dart';
 import 'package:tourism/views/dashbord/more/inbox/inbox.dart';
 import 'package:tourism/views/dashbord/more/more.dart';
 import 'package:tourism/views/dashbord/more/notification/notification.dart';
-import 'package:tourism/views/dashbord/more/order/order.dart';
+import 'package:tourism/views/dashbord/more/order/my_order.dart';
 import 'package:tourism/views/dashbord/more/paymet/paymet.dart';
 import 'package:tourism/views/dashbord/offers/offers.dart';
 import 'package:tourism/views/dashbord/profile/profile.dart';
 import 'package:tourism/views/deal/deal.dart';
 import 'package:tourism/views/explore_product/explore_product.dart';
-import 'package:tourism/views/final_order/final_order.dart';
 import 'package:tourism/views/slider/page_slider.dart';
 import 'package:tourism/views/splash/splash.dart';
 import 'package:tourism/views/usertype/usertype.dart';
@@ -83,14 +82,14 @@ class AppPages {
     ),
     GetPage(
       name: Routes.login,
-      page: () => const LoginView(),
+      page: () => LoginView(),
       binding: BindingsBuilder.put(
         () => LoginController(),
       ),
     ),
     GetPage(
       name: Routes.signup,
-      page: () => const SignUpView(),
+      page: () => SignUpView(),
       binding: BindingsBuilder.put(() => SignUpController()),
     ),
     GetPage(
@@ -103,7 +102,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.newpasword,
-      page: () => const NewPasswordView(),
+      page: () => NewPasswordView(),
     ),
     GetPage(
       name: Routes.pageSlider,
@@ -152,7 +151,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.order,
-      page: () => OrderView(),
+      page: () => MyOrderView(),
     ),
     GetPage(
       name: Routes.checkout,
@@ -164,7 +163,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.finalorder,
-      page: () => FinalOrderView(),
+      page: () => const FindDealView(),
     ),
     GetPage(
       name: Routes.notification,
@@ -176,7 +175,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.about,
-      page: () => AboutView(),
+      page: () => AboutUsView(),
     ),
   ];
 }
