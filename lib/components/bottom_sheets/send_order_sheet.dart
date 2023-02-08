@@ -42,8 +42,8 @@ sendOrderBottomSheet({BuildContext? context, AppLocalizations? local}) {
                 ),
                 SizedBox(height: 5),
                 Text(local.foryourorder),
-                SizedBox(height: 100),
-                kbutton(
+                SizedBox(height: 50),
+                AppButton(
                   width: Get.size.width / 1.3,
                   name: local.trackmyorder,
                 ),

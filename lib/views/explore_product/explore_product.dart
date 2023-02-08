@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tourism/components/boxShadow.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/components/linearGradient.dart';
+import 'package:tourism/components/snack_bars/app_snackbars.dart';
 import 'package:tourism/components/snack_bars/snackbar.dart';
 import 'package:tourism/core/core.dart';
 import 'package:tourism/routes/routes.dart';
@@ -144,7 +145,7 @@ class ExploreProductView extends StatelessWidget {
                               Text("Number of Portions",
                                   style: Theme.of(context).textTheme.button),
                               const Spacer(),
-                              kbutton(
+                              AppButton(
                                 onPressed: () {},
                                 name: "-",
                                 width: 50,
@@ -168,7 +169,7 @@ class ExploreProductView extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(width: 5),
-                              kbutton(
+                              AppButton(
                                 onPressed: () {},
                                 name: "+",
                                 width: 50,
@@ -234,10 +235,9 @@ class ExploreProductView extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              kbutton(
+                              AppButton(
                                 onPressed: () {
-                                  ksucessSnackBar(
-                                      context, "Add To Cart Sucessfully");
+                                  successSnackBar("Add To Cart Sucessfully");
                                 },
                                 name: "Add To Cart",
                                 width: 150,

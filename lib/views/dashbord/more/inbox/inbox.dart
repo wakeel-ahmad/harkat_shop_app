@@ -24,7 +24,7 @@ class InboxView extends StatelessWidget {
                   ),
                   SizedBox(width: 20),
                   Text(
-                    local!.notification,
+                    local!.inbox,
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   Spacer(),
@@ -38,8 +38,9 @@ class InboxView extends StatelessWidget {
               ListView.separated(
                 shrinkWrap: true,
                 itemBuilder: (context, index) => InboxTile(
-                  title: "Your orders has been picked up",
-                  subtitle: "1 hr ago",
+                  title: "Harakat Shop Promotion",
+                  subtitle:
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                   datetime: "Date/Time",
                   onStar: () {},
                 ),

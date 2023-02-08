@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism/components/snack_bars/app_snackbars.dart';
 import 'package:tourism/components/snack_bars/snackbar.dart';
 import 'package:tourism/core/core.dart';
 import 'package:tourism/views/dashbord/home/home.dart';
@@ -25,7 +26,7 @@ class _DashbordViewState extends State<DashbordView> {
     if (currentBackPressTime == null ||
         now.difference(currentBackPressTime!) > Duration(seconds: 2)) {
       currentBackPressTime = now;
-      ksucessSnackBar(context, "Press again to exit app");
+      successSnackBar("Press again to exit app");
       return Future.value(false);
     }
     return Future.value(true);

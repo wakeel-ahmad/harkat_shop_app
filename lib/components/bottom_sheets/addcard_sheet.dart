@@ -87,7 +87,7 @@ addCardBottomSheet({BuildContext? context}) {
                     ],
                   ),
                 ),
-                kbutton(name: "Add Card"),
+                AppButton(name: "Add Card"),
               ],
             ),
           );

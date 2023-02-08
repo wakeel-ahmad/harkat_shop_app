@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tourism/core/theme/theme_colors.dart';
 import 'package:tourism/routes/routes.dart';
@@ -13,7 +14,7 @@ class UserTypeView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 100),
+          padding: EdgeInsets.symmetric(vertical: 100.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -21,7 +22,7 @@ class UserTypeView extends StatelessWidget {
                 "assets/images/logo.png",
                 scale: 1,
               ),
-              SizedBox(height: Get.size.height / 10),
+              SizedBox(height: 20.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -33,7 +34,7 @@ class UserTypeView extends StatelessWidget {
                       icon: const Icon(Icons.arrow_forward_ios)),
                 ],
               ),
-              SizedBox(height: Get.size.height / 10),
+              SizedBox(height: 20.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -44,7 +45,7 @@ class UserTypeView extends StatelessWidget {
                     label: local!.loginasuser,
                     icon: Icons.person,
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   UserTypeContainer(
                     onTab: () {
                       Get.toNamed(Routes.finddeal);
@@ -78,10 +79,10 @@ class UserTypeContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTab,
       child: Container(
-        width: 100,
-        padding: const EdgeInsets.all(10),
+        width: 100.w,
+        padding: EdgeInsets.all(14.h),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           color: Colors.blue.shade300,
         ),
         child: Column(
@@ -91,13 +92,13 @@ class UserTypeContainer extends StatelessWidget {
               size: 35,
               color: ThemeColors.instance.primaryColor,
             ),
-            const SizedBox(height: 5),
+            SizedBox(height: 5.h),
             Text(
               label,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: ThemeColors.instance.primaryColor,
-                fontSize: 18,
+                fontSize: 18.sp,
               ),
             ),
           ],

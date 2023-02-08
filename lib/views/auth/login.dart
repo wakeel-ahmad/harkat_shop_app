@@ -1,7 +1,7 @@
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/components/input_decoraion.dart';
@@ -13,7 +13,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class LoginView extends GetView<LoginController> {
   LoginView({Key? key}) : super(key: key);
   final logInCtrl = Get.put(LoginController());
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,9 @@ class LoginView extends GetView<LoginController> {
                 children: [
                   Text(local!.login,
                       style: Theme.of(context).textTheme.headline5),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Text(local.addyourdeatiltosignin),
-                  SizedBox(height: 50),
+                  SizedBox(height: 50.h),
                   TextFormField(
                     controller: controller.emailController,
                     decoration: inputDecoration(hintText: local.email),
@@ -45,7 +45,7 @@ class LoginView extends GetView<LoginController> {
                       }
                     }),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   TextFormField(
                     obscureText: true,
                     decoration: inputDecoration(hintText: local.password),
@@ -61,16 +61,16 @@ class LoginView extends GetView<LoginController> {
                       }
                     }),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   Obx(
                     () => logInCtrl.indicator.value
                         ? const Center(
                             child: CircularProgressIndicator(),
                           )
-                        : kbutton(
+                        : AppButton(
                             onPressed: () {
                               logInCtrl.indicator(true);
-                              Future.delayed(Duration(seconds: 3), () {
+                              Future.delayed(const Duration(seconds: 3), () {
                                 Get.offAndToNamed(Routes.pageSlider);
                                 logInCtrl.indicator(false);
                               });
@@ -78,51 +78,53 @@ class LoginView extends GetView<LoginController> {
                             name: local.loginasgest,
                           ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Obx(
                     () => logInCtrl.isloading.value
                         ? const Center(
                             child: CircularProgressIndicator(),
                           )
-                        : kbutton(
+                        : AppButton(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
+                              if (controller.formKey.currentState!.validate()) {
                                 logInCtrl.isloading(true);
-                                Future.delayed(Duration(seconds: 3), () {
+                                Future.delayed(const Duration(seconds: 3), () {
                                   Get.offAndToNamed(Routes.pageSlider);
                                   logInCtrl.isloading(false);
                                 });
                               }
                             },
-                            name: local.signup,
+                            name: local.login,
                           ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   GestureDetector(
                     onTap: () => Get.toNamed(Routes.resetpassword),
                     child: Text(local.forgetpassword,
                         style: Theme.of(context).textTheme.button),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Text(local.or),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Text(local.loginwith,
                       style: Theme.of(context).textTheme.button),
-                  SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   kIconButton(
                     onPressed: () {},
                     name: local.loginwithfb,
                     color: ThemeColors.instance.secondryColor,
                     icon: FontAwesomeIcons.facebookF,
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   kIconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      logInCtrl.googleSignIn();
+                    },
                     name: local.loginwithgoogle,
                     color: ThemeColors.instance.redColor,
                     icon: FontAwesomeIcons.googlePlusG,
                   ),
-                  SizedBox(height: 80),
+                  SizedBox(height: 80.h),
                   RichText(
                     text: TextSpan(children: [
                       TextSpan(
@@ -134,7 +136,7 @@ class LoginView extends GetView<LoginController> {
                           text: local.signup,
                           style: Theme.of(context).textTheme.button!.copyWith(
                                 color: Colors.red,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.bold,
                               )),
                     ]),

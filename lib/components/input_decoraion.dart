@@ -18,6 +18,7 @@ InputDecoration inputDecoration({String? label, String? hintText}) {
 
 InputDecoration kinputDecoration({String? label, String? hintText}) {
   return InputDecoration(
+    contentPadding: EdgeInsets.symmetric(vertical: 0),
     prefixIcon: Icon(
       FontAwesomeIcons.search,
       color: Colors.grey,

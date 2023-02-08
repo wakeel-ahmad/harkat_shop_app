@@ -35,7 +35,7 @@ class OffersView extends StatelessWidget {
                 SizedBox(height: 10),
                 Text(local.finddiscounts),
                 SizedBox(height: 20),
-                kbutton(
+                AppButton(
                   onPressed: () {},
                   name: local.checkOffers,
                   width: 200,

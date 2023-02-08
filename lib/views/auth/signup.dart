@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/components/input_decoraion.dart';
@@ -24,9 +25,9 @@ class SignUpView extends StatelessWidget {
               children: [
                 Text(local!.signup,
                     style: Theme.of(context).textTheme.headline5),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(local.addyourdeatiltosignin),
-                SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 Form(
                   key: _formKey,
                   child: Column(
@@ -34,8 +35,8 @@ class SignUpView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextFormField(
-                        controller: signUpCtrl.firstNameController,
-                        decoration: inputDecoration(hintText: local.firstname),
+                        controller: signUpCtrl.nameController,
+                        decoration: inputDecoration(hintText: local.name),
                         validator: ((value) {
                           if (value == null || value.isEmpty) {
                             return local.require;
@@ -44,10 +45,10 @@ class SignUpView extends StatelessWidget {
                           }
                         }),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       TextFormField(
-                        controller: signUpCtrl.lastnameController,
-                        decoration: inputDecoration(hintText: local.lastname),
+                        controller: signUpCtrl.emailController,
+                        decoration: inputDecoration(hintText: local.email),
                         validator: ((value) {
                           if (value == null || value.isEmpty) {
                             return local.require;
@@ -56,7 +57,7 @@ class SignUpView extends StatelessWidget {
                           }
                         }),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       TextFormField(
                         controller: signUpCtrl.phoneController,
                         decoration:
@@ -69,7 +70,7 @@ class SignUpView extends StatelessWidget {
                           }
                         }),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       TextFormField(
                         controller: signUpCtrl.addressController,
                         decoration: inputDecoration(hintText: local.address),
@@ -81,7 +82,7 @@ class SignUpView extends StatelessWidget {
                           }
                         }),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       TextFormField(
                         controller: signUpCtrl.passwordController,
                         decoration: inputDecoration(hintText: local.password),
@@ -93,7 +94,7 @@ class SignUpView extends StatelessWidget {
                           }
                         }),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       TextFormField(
                         controller: signUpCtrl.conformPasswordController,
                         decoration:
@@ -109,13 +110,13 @@ class SignUpView extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Obx(
                   () => signUpCtrl.isloading.value
                       ? const Center(
                           child: CircularProgressIndicator(),
                         )
-                      : kbutton(
+                      : AppButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               signUpCtrl.isloading(true);
@@ -128,12 +129,12 @@ class SignUpView extends StatelessWidget {
                           name: local.signup,
                         ),
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: 50.h),
                 RichText(
                   text: TextSpan(children: [
                     TextSpan(
                         text: " ${local.alreadyhaveacc}   ",
-                        style: TextStyle(color: Colors.black)),
+                        style: const TextStyle(color: Colors.black)),
                     TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => Get.back(),

@@ -41,7 +41,7 @@ class NotificationView extends StatelessWidget {
                 title: "Your orders has been picked up",
                 subtitle: "1 hr ago",
               ),
-              separatorBuilder: (contex, i) => const Padding(
+              separatorBuilder: (contex, index) => const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Divider(),
               ),

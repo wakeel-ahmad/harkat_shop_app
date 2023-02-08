@@ -46,7 +46,7 @@ class NewPasswordView extends StatelessWidget {
                 ],
               ),
             ),
-            kbutton(
+            AppButton(
               onPressed: () {},
               name: local.next,
             ),

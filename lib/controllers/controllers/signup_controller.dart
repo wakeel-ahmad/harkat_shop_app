@@ -9,8 +9,7 @@ class SignUpController extends GetxController {
   RxBool isloading = RxBool(false);
 
   final formKey = GlobalKey<FormState>();
-  final firstNameController = TextEditingController();
-  final lastnameController = TextEditingController();
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
   final addressController = TextEditingController();
@@ -21,7 +20,7 @@ class SignUpController extends GetxController {
     if (formKey.currentState!.validate()) {
       var api = Get.find<AppApi>();
       var res = await api.post("/signup", {
-        'name': firstNameController.text.trim(),
+        'name': nameController.text.trim(),
         'email': emailController.text.trim(),
         'number': phoneController.text.trim(),
         'address': addressController.text.trim(),

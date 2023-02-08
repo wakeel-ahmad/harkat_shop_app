@@ -162,7 +162,7 @@ class CheckOutView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            kbutton(
+            AppButton(
               width: Get.size.width / 1.1,
               onPressed: () {
                 sendOrderBottomSheet(

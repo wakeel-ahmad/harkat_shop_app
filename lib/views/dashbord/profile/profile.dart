@@ -3,7 +3,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:tourism/components/button.dart';
 import 'package:tourism/components/input_decoraion.dart';
-import 'package:tourism/components/snack_bars/snackbar.dart';
+import 'package:tourism/components/snack_bars/app_snackbars.dart';
 import 'package:tourism/controllers/controllers/profile_controller.dart';
 import 'package:tourism/core/utlis/validators.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -151,12 +151,12 @@ class ProfileView extends StatelessWidget {
                     ],
                   ),
                 ),
-                kbutton(
+                AppButton(
                   onPressed: () {
                     if (ctrl.formKey.currentState!.validate()) {
-                      ksucessSnackBar(context, "message");
+                      successSnackBar("message");
                     }
-                    // kerrorSnackBar(context, "message");
+                    // errorSnackBar(context, "message");
                   },
                   name: local.save,
                 ),
@@ -164,15 +164,15 @@ class ProfileView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    kbutton(
+                    AppButton(
                         name: local.fazza,
                         labelSize: 11,
                         width: Get.size.width * 0.3),
-                    kbutton(
+                    AppButton(
                         name: local.isaad,
                         labelSize: 11,
                         width: Get.size.width * 0.3),
-                    kbutton(
+                    AppButton(
                         name: local.humatalwatan,
                         labelSize: 11,
                         width: Get.size.width * 0.3),

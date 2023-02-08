@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1088380466479",
+    "project_id": "harkat-shop-app",
+    "storage_bucket": "harkat-shop-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088380466479:android:e91642254ed9e63b4fddda",
+        "android_client_info": {
+          "package_name": "com.harakat.shop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088380466479-u5th0qb012cc29mj62ideeb8dfm8oqd3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADR2C8KmLU9i6tqFnnkTl4Px9d9jmOK_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088380466479-u5th0qb012cc29mj62ideeb8dfm8oqd3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

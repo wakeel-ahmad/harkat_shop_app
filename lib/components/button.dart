@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tourism/core/core.dart';
 
-ElevatedButton kbutton({
+ElevatedButton AppButton({
   VoidCallback? onPressed,
   double? width,
   String name = "Next",

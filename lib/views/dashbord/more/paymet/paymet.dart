@@ -53,7 +53,7 @@ class PaymetView extends StatelessWidget {
                   (index) => CardContaier(),
                 ),
                 SizedBox(height: 20),
-                kbutton(
+                AppButton(
                   width: Get.size.width / 1.5,
                   name: local.addanothercredit,
                   onPressed: () {
@@ -105,7 +105,7 @@ class CardContaier extends StatelessWidget {
               Image.asset("assets/icon/visa.png"),
               Text("**** **** ****"),
               Text("1212"),
-              kbutton(
+              AppButton(
                 width: 150,
                 onPressed: () {},
                 isBorder: true,
